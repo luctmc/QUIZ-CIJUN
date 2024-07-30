@@ -3,101 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Questionário de Segurança</title>
+    <title>QUIZ - PROGRAMA DE CONSCIENTIZAÇÃO EM SEGURANÇA DA INFORMAÇÃO</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: url(Background\ \(1\).png) no-repeat center center fixed;
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            color: #333;
         }
-        .quiz-container {
-            background-color: white;
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            width: 80%;
-            max-width: 400px;
             text-align: center;
-        }
-        .pergunta {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-        .opcao {
-            display: block;
-            background-color: #ececec;
-            margin: 5px 0;
-            padding: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .opcao:hover {
-            background-color: #dcdcdc;
-            transform: scale(1.05);
-        }
-        .correta {
-            background-color: #4caf50;
-            color: white;
-        }
-        .incorreta {
-            background-color: #f44336;
-            color: white;
-        }
-        .mensagem {
-            margin-top: 20px;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-        .botoes-nav {
-            margin-top: 20px;
-        }
-        .botoes-nav button {
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .botoes-nav button:hover {
-            background-color: #ddd;
+            width: 100%;
+            max-width: 500px;
         }
         .oculto {
             display: none;
         }
-        .trofeu {
-            font-size: 2em;
-            color: gold;
+        .pergunta {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .opcao {
+            background-color: #f4f4f4;
+            border: 2px solid #333;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .opcao:hover {
+            background-color: #ddd;
+            transform: scale(1.05);
+        }
+        .opcao.correta {
+            background-color: #a8e6a1;
+        }
+        .opcao.incorreta {
+            background-color: #e6a1a1;
+        }
+        .botao-neon {
+            background-color: #ffcc00;
+            color: #333;
+            border: 2px solid #333;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .botao-neon:hover {
+            background-color: #ffbf00;
+            transform: scale(1.05);
         }
         .cronometro {
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            color: #ff5722;
-            font-weight: bold;
-            animation: blink-animation 1s steps(5, start) infinite;
+            font-size: 4.2em;
+            margin-bottom: 10px;
+            color: #555;
+            transition: color 0.5s;
         }
-        @keyframes blink-animation {
-            to {
-                visibility: hidden;
-            }
+        .cronometro.verde {
+            color: rgb(98, 184, 98);
+        }
+        .cronometro.amarelo {
+            color: rgb(255, 145, 0);
+        }
+        .cronometro.vermelho {
+            color: rgb(218, 39, 39);
+        }
+        #resultado {
+            font-size: 1.2em;
+        }
+        #trofeu {
+            font-size: 2em;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <div class="quiz-container">
+    <div class="container">   
         <div id="pergunta1" class="container-pergunta">
             <div class="cronometro" id="cronometro1">15</div>
-            <div class="pergunta">Qual é a característica de uma senha segura?</div>
-            <div class="opcao" onclick="verificarResposta(1, this, false)">Contém apenas letras minúsculas.</div>
-            <div class="opcao" onclick="verificarResposta(1, this, false)">É curta e fácil de lembrar.</div>
-            <div class="opcao" onclick="verificarResposta(1, this, true)">Contém uma combinação de letras maiúsculas, minúsculas, números e símbolos.</div>
-            <div class="opcao" onclick="verificarResposta(1, this, false)">É igual ao seu nome de usuário.</div>
+            <div class="pergunta">Qual das seguintes opções é uma característica de uma senha segura?</div>
+            <div class="opcao" onclick="verificarResposta(1, this, false)">Usar apenas letras maiúsculas.</div>
+            <div class="opcao" onclick="verificarResposta(1, this, false)">Usar uma sequência de números, como 123456.</div>
+            <div class="opcao" onclick="verificarResposta(1, this, true)">Combinar letras maiúsculas, minúsculas, números e símbolos.</div>
+            <div class="opcao" onclick="verificarResposta(1, this, false)">Usar sua data de nascimento.</div>
         </div>
 
         <div id="pergunta2" class="container-pergunta oculto">
@@ -109,125 +113,181 @@
             <div class="opcao" onclick="verificarResposta(2, this, false)">Uma forma de proteger seu computador contra vírus.</div>
         </div>
 
-        <div id="resultados" class="oculto">
-            <div class="pergunta">Resultados:</div>
-            <div id="resultado1"></div>
-            <div id="resultado2"></div>
-            <div id="trofeu" class="oculto trofeu">🏆</div>
-            <div id="totalAcertos"></div>
+        <div id="pergunta3" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro3">15</div>
+            <div class="pergunta">O que você deve fazer se receber um e-mail suspeito de uma fonte desconhecida?</div>
+            <div class="opcao" onclick="verificarResposta(3, this, false)">Responder ao remetente pedindo mais informações.</div>
+            <div class="opcao" onclick="verificarResposta(3, this, false)">Clicar em todos os links para ver do que se trata.</div>
+            <div class="opcao" onclick="verificarResposta(3, this, true)">Deletar o e-mail sem clicar em nenhum link ou baixar anexos.</div>
+            <div class="opcao" onclick="verificarResposta(3, this, false)">Encaminhar o e-mail para todos os colegas.</div>
         </div>
 
-        <div class="botoes-nav">
-            <button onclick="perguntaAnterior()">Anterior</button>
-            <button onclick="proximaPergunta()">Próxima</button>
+        <div id="pergunta4" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro4">15</div>
+            <div class="pergunta">Por que é importante manter o software do seu computador atualizado?</div>
+            <div class="opcao" onclick="verificarResposta(4, this, false)">Para melhorar a velocidade de processamento.</div>
+            <div class="opcao" onclick="verificarResposta(4, this, false)">Para garantir que todos os seus arquivos sejam salvos automaticamente.</div>
+            <div class="opcao" onclick="verificarResposta(4, this, true)">Para proteger contra vulnerabilidades de segurança conhecidas.</div>
+            <div class="opcao" onclick="verificarResposta(4, this, false)">Para poder jogar os últimos lançamentos de jogos.</div>
         </div>
 
-        <button id="reiniciar" class="oculto" onclick="reiniciarQuiz()">Refazer Quiz</button>
+        <div id="pergunta5" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro5">15</div>
+            <div class="pergunta">Por que é importante ter políticas de segurança da informação na empresa?</div>
+            <div class="opcao" onclick="verificarResposta(5, this, false)">Para garantir que todos os funcionários usem o mesmo software.</div>
+            <div class="opcao" onclick="verificarResposta(5, this, true)">Para estabelecer diretrizes claras sobre a proteção e o manejo de informações sensíveis.</div>
+            <div class="opcao" onclick="verificarResposta(5, this, false)">Para aumentar a quantidade de e-mails internos.</div>
+            <div class="opcao" onclick="verificarResposta(5, this, false)">Para permitir o acesso irrestrito a todos os dados da empresa.</div>
+        </div>
 
-        <div id="mensagem" class="mensagem"></div>
+        <div id="pergunta6" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro6">15</div>
+            <div class="pergunta">Qual é o objetivo principal da LGPD (Lei Geral de Proteção de Dados)?</div>
+            <div class="opcao" onclick="verificarResposta(6, this, false)">Garantir que todas as empresas brasileiras usem o mesmo sistema de TI.</div>
+            <div class="opcao" onclick="verificarResposta(6, this, true)">Proteger os dados pessoais dos cidadãos, garantindo privacidade e segurança.</div>
+            <div class="opcao" onclick="verificarResposta(6, this, false)">Aumentar a quantidade de dados coletados pelas empresas.</div>
+            <div class="opcao" onclick="verificarResposta(6, this, false)">Permitir o livre compartilhamento de dados entre empresas.</div>
+        </div>
+
+        <div id="pergunta7" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro7">15</div>
+            <div class="pergunta">Quais são considerados dados sensíveis pela LGPD?</div>
+            <div class="opcao" onclick="verificarResposta(7, this, false)">Nome e endereço.</div>
+            <div class="opcao" onclick="verificarResposta(7, this, false)">Número de telefone e e-mail.</div>
+            <div class="opcao" onclick="verificarResposta(7, this, true)">Dados sobre origem racial ou étnica, convicção religiosa, e dados de saúde ou vida sexual.</div>
+            <div class="opcao" onclick="verificarResposta(7, this, false)">Informações sobre compras online.</div>
+        </div>
+
+        <div id="pergunta8" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro8">15</div>
+            <div class="pergunta">Quais são os princípios da LGPD?</div>
+            <div class="opcao" onclick="verificarResposta(8, this, false)">Compartilhamento irrestrito, minimização de dados, segurança.</div>
+            <div class="opcao" onclick="verificarResposta(8, this, true)">Finalidade, adequação, necessidade, livre acesso, qualidade dos dados, transparência, segurança, prevenção, não discriminação, responsabilização e prestação de contas.</div>
+            <div class="opcao" onclick="verificarResposta(8, this, false)">Coleta indiscriminada, segurança, transparência.</div>
+            <div class="opcao" onclick="verificarResposta(8, this, false)">Necessidade, segurança, minimização de dados, livre acesso.</div>
+        </div>
+
+        <div id="pergunta9" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro9">15</div>
+            <div class="pergunta">Quais direitos a LGPD garante aos titulares dos dados?</div>
+            <div class="opcao" onclick="verificarResposta(9, this, true)">Acesso, retificação, exclusão, portabilidade, informação sobre compartilhamento, entre outros.</div>
+            <div class="opcao" onclick="verificarResposta(9, this, false)">Acesso, exclusão, venda de dados.</div>
+            <div class="opcao" onclick="verificarResposta(9, this, false)">Venda de dados, retificação, exclusão.</div>
+            <div class="opcao" onclick="verificarResposta(9, this, false)">Acesso irrestrito, venda de dados, retificação.</div>
+        </div>
+
+        <div id="pergunta10" class="container-pergunta oculto">
+            <div class="cronometro" id="cronometro10">15</div>
+            <div class="pergunta">Quais são as sanções aplicáveis pela ANPD em caso de violação da LGPD?</div>
+            <div class="opcao" onclick="verificarResposta(10, this, true)">Advertência, multa, publicização da infração, bloqueio dos dados pessoais, eliminação dos dados pessoais.</div>
+            <div class="opcao" onclick="verificarResposta(10, this, false)">Multa, prisão, exclusão da empresa do mercado.</div>
+            <div class="opcao" onclick="verificarResposta(10, this, false)">Advertência, multa, prisão dos responsáveis.</div>
+            <div class="opcao" onclick="verificarResposta(10, this, false)">Multa, eliminação da empresa, publicização da infração.</div>
+        </div>
+
+        <div id="resultadoFinal" class="oculto">
+            <div id="resultado"></div>
+            <div id="trofeu"></div>
+            <button class="botao-neon" onclick="refazerQuiz()">Refazer Quiz</button>
+            <button class="botao-neon" onclick="exibirRespostasCorretas()">Ver Respostas Corretas</button>
+        </div>
     </div>
 
     <script>
+        let tempoRestante = 15;
+        let cronometroId;
         let perguntaAtual = 1;
         let pontuacao = 0;
-        let timer;
 
-        function mostrarPergunta(numeroPergunta) {
-            clearInterval(timer);
-            document.querySelectorAll('.container-pergunta').forEach((container) => {
-                container.classList.add('oculto');
-            });
-            document.getElementById('pergunta' + numeroPergunta).classList.remove('oculto');
-            iniciarCronometro(numeroPergunta);
-        }
-
-        function verificarResposta(numeroPergunta, elemento, correta) {
-            const elementoMensagem = document.getElementById('mensagem');
-            clearInterval(timer);
-            if (correta) {
-                elementoMensagem.textContent = 'Parabéns, você acertou! 🎉';
-                elementoMensagem.classList.remove('incorreta');
-                elementoMensagem.classList.add('correta');
-                pontuacao++;
-                elemento.classList.add('correta');
+        function atualizarCorCronometro() {
+            const cronometro = document.getElementById('cronometro' + perguntaAtual);
+            if (tempoRestante > 10) {
+                cronometro.classList.add('verde');
+                cronometro.classList.remove('amarelo', 'vermelho');
+            } else if (tempoRestante > 5) {
+                cronometro.classList.add('amarelo');
+                cronometro.classList.remove('verde', 'vermelho');
             } else {
-                elementoMensagem.textContent = 'Ops, não foi dessa vez! 😵';
-                elementoMensagem.classList.remove('correta');
-                elementoMensagem.classList.add('incorreta');
-                elemento.classList.add('incorreta');
-            }
-            setTimeout(() => {
-                elementoMensagem.textContent = '';
-                if (numeroPergunta < 2) {
-                    proximaPergunta();
-                } else {
-                    mostrarResultados();
-                }
-            }, 1500);
-        }
-
-        function proximaPergunta() {
-            if (perguntaAtual < 2) {
-                perguntaAtual++;
-                mostrarPergunta(perguntaAtual);
+                cronometro.classList.add('vermelho');
+                cronometro.classList.remove('verde', 'amarelo');
             }
         }
 
-        function perguntaAnterior() {
-            if (perguntaAtual > 1) {
-                perguntaAtual--;
-                mostrarPergunta(perguntaAtual);
-            }
-        }
-
-        function mostrarResultados() {
-            document.querySelectorAll('.container-pergunta').forEach((container) => {
-                container.classList.add('oculto');
-            });
-            document.getElementById('resultados').classList.remove('oculto');
-            document.querySelector('.botoes-nav').classList.add('oculto');
-            document.getElementById('reiniciar').classList.remove('oculto');
-
-            document.getElementById('resultado1').innerHTML = 'Pergunta 1: ' + (document.querySelector('#pergunta1 .correta') ? '✔️' : '❌');
-            document.getElementById('resultado2').innerHTML = 'Pergunta 2: ' + (document.querySelector('#pergunta2 .correta') ? '✔️' : '❌');
-
-            document.getElementById('totalAcertos').textContent = `Total de acertos: ${pontuacao} de 2`;
-            
-            if (pontuacao === 2) {
-                document.getElementById('trofeu').classList.remove('oculto');
-            }
-        }
-
-        function reiniciarQuiz() {
-            perguntaAtual = 1;
-            pontuacao = 0;
-            document.querySelectorAll('.opcao').forEach((opcao) => {
-                opcao.classList.remove('correta', 'incorreta');
-            });
-            document.querySelector('.botoes-nav').classList.remove('oculto');
-            document.getElementById('reiniciar').classList.add('oculto');
-            document.getElementById('resultados').classList.add('oculto');
-            document.getElementById('trofeu').classList.add('oculto');
-            mostrarPergunta(perguntaAtual);
-        }
-
-        function iniciarCronometro(numeroPergunta) {
-            let tempoRestante = 15;
-            const cronometro = document.getElementById('cronometro' + numeroPergunta);
-            cronometro.textContent = tempoRestante;
-            timer = setInterval(() => {
+        function iniciarCronometro() {
+            document.getElementById('cronometro' + perguntaAtual).textContent = tempoRestante;
+            atualizarCorCronometro(); // Atualiza a cor inicial
+            cronometroId = setInterval(function() {
                 tempoRestante--;
-                cronometro.textContent = tempoRestante;
+                document.getElementById('cronometro' + perguntaAtual).textContent = tempoRestante;
+                atualizarCorCronometro(); // Atualiza a cor a cada segundo
                 if (tempoRestante <= 0) {
-                    clearInterval(timer);
-                    cronometro.textContent = '0';
-                    const perguntaContainer = document.getElementById('pergunta' + numeroPergunta);
-                    verificarResposta(numeroPergunta, perguntaContainer.querySelector('.opcao'), false);
+                    clearInterval(cronometroId);
+                    avancarPergunta();
                 }
             }, 1000);
         }
 
-        mostrarPergunta(perguntaAtual);
+        function verificarResposta(pergunta, elemento, correta) {
+            clearInterval(cronometroId);
+            if (correta) {
+                elemento.classList.add('correta');
+                pontuacao++;
+            } else {
+                elemento.classList.add('incorreta');
+            }
+            setTimeout(avancarPergunta, 1000);
+        }
+
+        function avancarPergunta() {
+            document.getElementById('pergunta' + perguntaAtual).classList.add('oculto');
+            perguntaAtual++;
+            tempoRestante = 15;
+            if (perguntaAtual <= 10) {
+                document.getElementById('pergunta' + perguntaAtual).classList.remove('oculto');
+                iniciarCronometro();
+            } else {
+                exibirResultado();
+            }
+        }
+
+        function exibirResultado() {
+            let resultadoTexto = `Você acertou ${pontuacao} de 10 perguntas.`;
+            let trofeu = "";
+            if (pontuacao === 10) {
+                trofeu = "🏆";
+            }
+            document.getElementById('resultado').textContent = resultadoTexto;
+            document.getElementById('trofeu').textContent = trofeu;
+            document.getElementById('resultadoFinal').classList.remove('oculto');
+        }
+
+        function refazerQuiz() {
+            perguntaAtual = 1;
+            pontuacao = 0;
+            document.getElementById('resultadoFinal').classList.add('oculto');
+            let opcoes = document.querySelectorAll('.opcao');
+            opcoes.forEach(opcao => {
+                opcao.classList.remove('correta', 'incorreta');
+            });
+            document.getElementById('pergunta1').classList.remove('oculto');
+            iniciarCronometro();
+        }
+
+        function exibirRespostasCorretas() {
+            for (let i = 1; i <= 10; i++) {
+                let opcoes = document.querySelectorAll(`#pergunta${i} .opcao`);
+                opcoes.forEach(opcao => {
+                    if (opcao.getAttribute('onclick').includes('true')) {
+                        opcao.classList.add('correta');
+                    }
+                });
+                document.getElementById(`cronometro${i}`).classList.add('oculto'); // Ocultar o cronômetro
+                document.getElementById(`pergunta${i}`).classList.remove('oculto');
+            }
+            document.getElementById('resultadoFinal').classList.add('oculto');
+        }
+
+        window.onload = iniciarCronometro;
     </script>
 </body>
 </html>
